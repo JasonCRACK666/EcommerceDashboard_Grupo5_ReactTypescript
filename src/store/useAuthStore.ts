@@ -10,11 +10,12 @@ interface AuthState {
 }
 
 interface AuthActions {
-  setAuth: (user: IUserMe, token: string) => void
+  setAuth: (user: IUserMe) => void
+  setToken: (toke: string) => void
   logOut: () => void
 }
 
-export const authStore = create<AuthState & AuthActions>()(
+export const useAuthStore = create<AuthState & AuthActions>()(
   devtools(
     persist(
       set => ({
@@ -22,7 +23,8 @@ export const authStore = create<AuthState & AuthActions>()(
         token: null,
         user: null,
         logOut: () => set(() => ({ isAuth: false, token: null, user: null })),
-        setAuth: (user, token) => set(() => ({ isAuth: true, token, user }))
+        setAuth: user => set(state => ({ ...state, isAuth: true, user })),
+        setToken: token => set(state => ({ ...state, token }))
       }),
       {
         name: 'auth-store'
