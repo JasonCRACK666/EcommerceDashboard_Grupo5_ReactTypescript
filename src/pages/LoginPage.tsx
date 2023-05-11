@@ -2,6 +2,8 @@ import { FC, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
+import { useAuthStore } from '../store/useAuthStore'
+
 import { useMutation } from '@tanstack/react-query'
 
 import { AxiosError } from 'axios'
@@ -53,6 +55,8 @@ const LoginPage: FC = () => {
   const [showError, setShowError] = useState<State['showError']>(false)
   const [showPassword, setShowPassword] = useState<State['showPassword']>(false)
 
+  const { setToken } = useAuthStore()
+
   const navigate = useNavigate()
 
   const { mutate: mutateLogin } = useMutation<
@@ -63,6 +67,7 @@ const LoginPage: FC = () => {
     mutationFn: login,
     onSuccess: ({ token }) => {
       localStorage.setItem('token', token)
+      setToken(token)
       navigate('/dashboard')
     },
     onError: ({ message }) => {
