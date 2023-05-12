@@ -27,31 +27,31 @@ const links: IListItemNav[] = [
     title: 'Usuarios',
     icon: <HiOutlineUsers />,
     activeIcon: <HiUsers />,
-    href: '/users'
+    href: '/dashboard/users'
   },
   {
     title: 'Productos',
     icon: <RiProductHuntLine />,
     activeIcon: <RiProductHuntFill />,
-    href: '/products'
+    href: '/dashboard/products'
   },
   {
     title: 'Marcas',
     icon: <FaRegBuilding />,
     activeIcon: <FaBuilding />,
-    href: '/brands'
+    href: '/dashboard/brands'
   },
   {
     title: 'Categorías',
     icon: <MdOutlineCategory />,
     activeIcon: <MdCategory />,
-    href: '/categories'
+    href: '/dashboard/categories'
   },
   {
     title: 'Colores',
     icon: <IoColorPaletteOutline />,
     activeIcon: <IoColorPalette />,
-    href: '/colors'
+    href: '/dashboard/colors'
   }
 ]
 
@@ -61,7 +61,13 @@ const ListNav: FC = () => {
   const theme = useTheme()
 
   return (
-    <Box sx={{ height: '100vh', backgroundColor: theme.palette.grey[900] }}>
+    <Box
+      sx={{
+        height: '100vh',
+        backgroundColor: theme.palette.grey[900],
+        position: 'sticky'
+      }}
+    >
       <Box
         sx={{
           py: 2,
