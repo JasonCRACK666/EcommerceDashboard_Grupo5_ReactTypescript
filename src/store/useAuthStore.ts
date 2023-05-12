@@ -6,7 +6,6 @@ import IUserMe from '../interfaces/auth/IUserMe'
 interface AuthState {
   user: IUserMe | null
   token: string | null
-  isAuth: boolean
 }
 
 interface AuthActions {
@@ -17,11 +16,10 @@ interface AuthActions {
 
 export const useAuthStore = create<AuthState & AuthActions>()(
   devtools(set => ({
-    isAuth: false,
     token: null,
     user: null,
-    logOut: () => set(() => ({ isAuth: false, token: null, user: null })),
-    setAuth: user => set(state => ({ ...state, isAuth: true, user })),
+    logOut: () => set(() => ({ token: null, user: null })),
+    setAuth: user => set(state => ({ ...state, user })),
     setToken: token => set(state => ({ ...state, token }))
   }))
 )
