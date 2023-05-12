@@ -16,7 +16,7 @@ interface AuthActions {
 
 export const useAuthStore = create<AuthState & AuthActions>()(
   devtools(set => ({
-    token: null,
+    token: localStorage.getItem('token'),
     user: null,
     logOut: () => set(() => ({ token: null, user: null })),
     setAuth: user => set(state => ({ ...state, user })),
