@@ -7,6 +7,7 @@ import { useAuthorization } from './hooks/useAuthorization'
 import DashboardLayout from './layouts/DashboardLayout'
 
 import LoginPage from './pages/LoginPage'
+import DashboardPage from './pages/DashboardPage'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </ResizeListNavProvider>
     ),
-    children: []
+    path: '/dashboard',
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />
+      }
+    ]
   }
 ])
 
