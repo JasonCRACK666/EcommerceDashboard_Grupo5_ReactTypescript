@@ -8,6 +8,7 @@ import DashboardLayout from './layouts/DashboardLayout'
 
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
+import ProductsManagePage from './pages/ProductsManagePage'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <DashboardPage />
+      },
+      {
+        path: 'products',
+        element: <ProductsManagePage />
       }
     ]
   }
