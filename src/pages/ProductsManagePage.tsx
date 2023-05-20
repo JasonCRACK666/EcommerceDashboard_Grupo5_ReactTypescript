@@ -1,4 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
+
+import ProductDetailModalProvider, {
+  ProductDetailModalContext
+} from '../context/ProductDetailModalProvider'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -9,6 +13,7 @@ import IPaginationResponse from '../interfaces/IPaginationResponse'
 import IProduct from '../interfaces/product/IProduct'
 
 import ProductTableRow from '../components/ProductTableRow'
+import ProductDetailModal from '../components/ProductDetailModal'
 
 import {
   Container,
@@ -56,7 +61,7 @@ const ProductsManagePage: FC = () => {
   }
 
   return (
-    <>
+    <ProductDetailModalProvider>
       <Container maxWidth='lg' sx={{ mt: 2 }}>
         <Typography component='h1' variant='h2'>
           Productos
@@ -92,6 +97,7 @@ const ProductsManagePage: FC = () => {
                   <TableCell>Marca</TableCell>
                   <TableCell align='right'>Imagen (ID)</TableCell>
                   <TableCell align='right'>Colores (Cantidad)</TableCell>
+                  <TableCell sx={{ color: 'blue' }}>Detalle</TableCell>
                   <TableCell sx={{ color: 'red' }}>Eliminar</TableCell>
                 </TableRow>
               </TableHead>
@@ -110,6 +116,9 @@ const ProductsManagePage: FC = () => {
           )}
         </TableContainer>
       </Container>
+
+      <ShowProductDetailModal />
+
       <Snackbar
         open={showMessage}
         autoHideDuration={6000}
@@ -119,8 +128,16 @@ const ProductsManagePage: FC = () => {
           {alertMessage}
         </Alert>
       </Snackbar>
-    </>
+    </ProductDetailModalProvider>
   )
+}
+
+const ShowProductDetailModal: FC = () => {
+  const { isOpen } = useContext(ProductDetailModalContext)
+
+  if (isOpen) return <ProductDetailModal />
+
+  return null
 }
 
 export default ProductsManagePage

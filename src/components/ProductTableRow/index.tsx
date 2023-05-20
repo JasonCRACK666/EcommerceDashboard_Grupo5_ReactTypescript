@@ -1,4 +1,6 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
+
+import { ProductDetailModalContext } from '../../context/ProductDetailModalProvider'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -12,6 +14,7 @@ import IErrorResponse from '../../interfaces/IErrorResponse'
 import { AlertColor, IconButton, TableCell, TableRow } from '@mui/material'
 
 import { BsTrashFill } from 'react-icons/bs'
+import { BiDetail } from 'react-icons/bi'
 
 interface Props {
   product: IProduct
@@ -26,6 +29,8 @@ const ProductTableRow: FC<Props> = ({
   setShowMessage,
   setTypeAlert
 }) => {
+  const { handleOpen } = useContext(ProductDetailModalContext)
+
   const queryClient = useQueryClient()
 
   const { mutate: mutateDeleteProduct } = useMutation<
@@ -69,6 +74,11 @@ const ProductTableRow: FC<Props> = ({
       <TableCell>{product.brand.name}</TableCell>
       <TableCell align='right'>{product.image.id}</TableCell>
       <TableCell align='right'>{product.colors.length}</TableCell>
+      <TableCell>
+        <IconButton color='info' onClick={() => handleOpen(product.id)}>
+          <BiDetail />
+        </IconButton>
+      </TableCell>
       <TableCell>
         <IconButton
           color='error'
