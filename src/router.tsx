@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import ProductsManagePage from './pages/ProductsManagePage'
 import BrandsManagePage from './pages/BrandsManagePage'
+import CategoriesManagePage from './pages/CategoriesManagePage'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: 'brands',
         element: <BrandsManagePage />
+      },
+      {
+        path: 'categories',
+        element: <CategoriesManagePage />
       }
     ]
   }
