@@ -9,6 +9,7 @@ import DashboardLayout from './layouts/DashboardLayout'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import ProductsManagePage from './pages/ProductsManagePage'
+import BrandsManagePage from './pages/BrandsManagePage'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <ProductsManagePage />
+      },
+      {
+        path: 'brands',
+        element: <BrandsManagePage />
       }
     ]
   }
