@@ -11,6 +11,7 @@ import DashboardPage from './pages/DashboardPage'
 import ProductsManagePage from './pages/ProductsManagePage'
 import BrandsManagePage from './pages/BrandsManagePage'
 import CategoriesManagePage from './pages/CategoriesManagePage'
+import ColorsManagePage from './pages/ColorsManagePage'
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: 'categories',
         element: <CategoriesManagePage />
+      },
+      {
+        path: 'colors',
+        element: <ColorsManagePage />
       }
     ]
   }
