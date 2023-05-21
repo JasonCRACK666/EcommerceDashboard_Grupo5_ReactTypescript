@@ -4,7 +4,7 @@ import { Alert, AlertColor, Snackbar } from '@mui/material'
 
 interface InitialValues {
   openDetail: boolean
-  brandSelected: number | null
+  selected: number | null
   alertMessage: string | null
   showMessage: boolean
   typeAlert: AlertColor
@@ -17,7 +17,7 @@ interface InitialValues {
 
 export const ManageContext = createContext<InitialValues>({
   openDetail: false,
-  brandSelected: null,
+  selected: null,
   alertMessage: null,
   showMessage: false,
   typeAlert: 'success',
@@ -52,23 +52,22 @@ const ManageProvider: FC<Props> = ({ children }) => {
 
   const [openDetail, setOpenDetail] =
     useState<InitialValues['openDetail']>(false)
-  const [brandSelected, setBrandSelected] =
-    useState<InitialValues['brandSelected']>(null)
+  const [selected, setSelected] = useState<InitialValues['selected']>(null)
 
   const handleOpenDetail: InitialValues['handleOpenDetail'] = productId => {
-    setBrandSelected(productId)
+    setSelected(productId)
     setOpenDetail(true)
   }
 
   const handleCloseDetail: InitialValues['handleCloseDetail'] = () => {
     setOpenDetail(false)
-    setBrandSelected(null)
+    setSelected(null)
   }
 
   return (
     <ManageContext.Provider
       value={{
-        brandSelected,
+        selected,
         openDetail,
         alertMessage,
         showMessage,
