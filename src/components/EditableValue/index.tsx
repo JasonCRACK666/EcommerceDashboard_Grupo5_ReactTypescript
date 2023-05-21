@@ -9,8 +9,6 @@ import {
   MouseEventHandler
 } from 'react'
 
-import IUpdateProductInitialValues from '../../interfaces/product/IUpdateProductInitialValues'
-
 import { UseFormSetValue } from 'react-hook-form'
 
 import { Box, Typography, useTheme } from '@mui/material'
@@ -26,9 +24,10 @@ interface State {
 
 interface Props {
   defaultValue: string | number
-  setValue: UseFormSetValue<IUpdateProductInitialValues>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setValue: UseFormSetValue<any>
   variant: Variant
-  name: keyof IUpdateProductInitialValues
+  name: string
   dataInEditing: string[]
   setDataInEditing: Dispatch<SetStateAction<string[]>>
   children: ReactElement

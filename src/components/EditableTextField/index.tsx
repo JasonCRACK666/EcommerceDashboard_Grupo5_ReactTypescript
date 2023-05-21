@@ -1,7 +1,5 @@
 import { ChangeEvent, FC } from 'react'
 
-import IUpdateProductInitialValues from '../../interfaces/product/IUpdateProductInitialValues'
-
 import { UseFormRegister } from 'react-hook-form'
 
 import {
@@ -20,9 +18,10 @@ interface Props {
   onToggle?: () => void
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   value?: string | number
-  name?: keyof IUpdateProductInitialValues
+  name?: string
   variant?: Variant
-  register: UseFormRegister<IUpdateProductInitialValues>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: UseFormRegister<any>
   multiline?: boolean
   errorMessage: string | undefined
 }
@@ -31,11 +30,11 @@ const EditableTextField: FC<Props> = ({
   value,
   name,
   variant,
+  multiline,
+  errorMessage,
   register,
   onToggle,
-  onChange,
-  multiline,
-  errorMessage
+  onChange
 }) => {
   const theme = useTheme()
 
