@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
-import ManageProvider from '../context/ManageProvider'
+import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -26,6 +26,7 @@ import {
   TableRow,
   Typography
 } from '@mui/material'
+import BrandDetailModal from '../components/BrandDetailModal'
 
 const BrandsManagePage: FC = () => {
   const {
@@ -83,8 +84,18 @@ const BrandsManagePage: FC = () => {
           ) : null}
         </TableContainer>
       </Container>
+
+      <ShowBrandDetailModal />
     </ManageProvider>
   )
+}
+
+const ShowBrandDetailModal: FC = () => {
+  const { openDetail } = useContext(ManageContext)
+
+  if (openDetail) return <BrandDetailModal />
+
+  return null
 }
 
 export default BrandsManagePage
