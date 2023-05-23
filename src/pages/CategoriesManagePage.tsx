@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
-import ManageProvider from '../context/ManageProvider'
+import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -11,6 +11,7 @@ import ICategory from '../interfaces/category/ICategory'
 import IErrorResponse from '../interfaces/IErrorResponse'
 
 import CategoryTableRow from '../components/CategoryTableRow'
+import CategoryDetailModal from '../components/CategoryDetailModal'
 
 import {
   Box,
@@ -82,8 +83,18 @@ const CategoriesManagePage: FC = () => {
           ) : null}
         </TableContainer>
       </Container>
+
+      <ShowCategoryDetailModal />
     </ManageProvider>
   )
+}
+
+const ShowCategoryDetailModal: FC = () => {
+  const { openDetail } = useContext(ManageContext)
+
+  if (openDetail) return <CategoryDetailModal />
+
+  return null
 }
 
 export default CategoriesManagePage
