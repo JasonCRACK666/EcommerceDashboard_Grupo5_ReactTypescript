@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
-import ManageProvider from '../context/ManageProvider'
+import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -25,6 +25,7 @@ import {
   Typography
 } from '@mui/material'
 import ColorTableRow from '../components/ColorTableRow'
+import ColorDetailModal from '../components/ColorDetialModal'
 
 const ColorsManagePage: FC = () => {
   const {
@@ -82,8 +83,18 @@ const ColorsManagePage: FC = () => {
           ) : null}
         </TableContainer>
       </Container>
+
+      <ShowColorDetailModal />
     </ManageProvider>
   )
+}
+
+const ShowColorDetailModal: FC = () => {
+  const { openDetail } = useContext(ManageContext)
+
+  if (!openDetail) return null
+
+  return <ColorDetailModal />
 }
 
 export default ColorsManagePage

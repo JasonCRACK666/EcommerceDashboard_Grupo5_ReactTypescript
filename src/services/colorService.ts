@@ -1,6 +1,9 @@
 import axios from 'axios'
+
 import IColor from '../interfaces/color/IColor'
+import IUpdateColor from '../interfaces/color/IUpdateColor'
 import IMessageResponse from '../interfaces/IMessageResponse'
+
 import { getToken } from '../utils/getToken'
 
 const colorEndpoint = axios.create({
@@ -10,6 +13,24 @@ const colorEndpoint = axios.create({
 export const getAllColors = async (): Promise<IColor[]> => {
   const res = await colorEndpoint.get<{ data: IColor[] }>('')
   return res.data.data
+}
+
+export const getColor = async (colorId: number | null): Promise<IColor> => {
+  const res = await colorEndpoint.get<IColor>(`/${colorId}`)
+  return res.data
+}
+
+export const updateColor = async (
+  colorId: number,
+  colorData: IUpdateColor
+): Promise<IColor> => {
+  const res = await colorEndpoint.put(`/${colorId}`, colorData, {
+    headers: {
+      Authorization: getToken()
+    }
+  })
+
+  return res.data
 }
 
 export const deleteColor = async (
