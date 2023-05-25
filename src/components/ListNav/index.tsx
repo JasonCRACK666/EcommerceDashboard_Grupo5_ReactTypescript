@@ -65,7 +65,8 @@ const ListNav: FC = () => {
       sx={{
         height: '100vh',
         backgroundColor: theme.palette.grey[900],
-        position: 'sticky'
+        position: 'sticky',
+        top: 0
       }}
     >
       <Box
