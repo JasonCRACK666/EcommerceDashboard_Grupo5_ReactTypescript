@@ -10,6 +10,9 @@ import { getAllColors } from '../services/colorService'
 import IColor from '../interfaces/color/IColor'
 import IErrorResponse from '../interfaces/IErrorResponse'
 
+import ColorTableRow from '../components/ColorTableRow'
+import ColorDetailModal from '../components/ColorDetailModal'
+
 import {
   Box,
   CircularProgress,
@@ -24,8 +27,6 @@ import {
   TableRow,
   Typography
 } from '@mui/material'
-import ColorTableRow from '../components/ColorTableRow'
-import ColorDetailModal from '../components/ColorDetialModal'
 
 const ColorsManagePage: FC = () => {
   const {
