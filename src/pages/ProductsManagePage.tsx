@@ -1,5 +1,7 @@
 import { FC, useContext, useState } from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import ProductDetailModalProvider, {
   ProductDetailModalContext
 } from '../context/ProductDetailModalProvider'
@@ -30,7 +32,8 @@ import {
   CircularProgress,
   AlertColor,
   Snackbar,
-  Alert
+  Alert,
+  Button
 } from '@mui/material'
 
 interface State {
@@ -43,6 +46,8 @@ const ProductsManagePage: FC = () => {
   const [showMessage, setShowMessage] = useState<State['showMessage']>(false)
   const [alertMessage, setAlertMessage] = useState<State['alertMessage']>(null)
   const [typeAlert, setTypeAlert] = useState<State['typeAlert']>('success')
+
+  const navigate = useNavigate()
 
   const {
     data: products,
@@ -63,9 +68,18 @@ const ProductsManagePage: FC = () => {
   return (
     <ProductDetailModalProvider>
       <Container maxWidth='lg' sx={{ mt: 2 }}>
-        <Typography component='h1' variant='h2'>
-          Productos
-        </Typography>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography component='h1' variant='h2'>
+            Productos
+          </Typography>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={() => navigate('/dashboard/products/create')}
+          >
+            Añadir producto
+          </Button>
+        </Box>
 
         <Divider />
 

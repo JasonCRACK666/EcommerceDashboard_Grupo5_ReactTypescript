@@ -26,6 +26,18 @@ export const getProduct = async (
   return res.data
 }
 
+export const createProduct = async (
+  dataProduct: FormData
+): Promise<IDetailProduct> => {
+  const res = await productEndpoint.post<IDetailProduct>('', dataProduct, {
+    headers: {
+      Authorization: getToken()
+    }
+  })
+
+  return res.data
+}
+
 export const updateProduct = async (
   productId: number,
   dataProduct: IUpdateProductInitialValues
