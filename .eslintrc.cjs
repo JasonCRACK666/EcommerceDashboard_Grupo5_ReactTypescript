@@ -10,6 +10,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'no-useless-escape': 'off'
+    'no-useless-escape': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }
