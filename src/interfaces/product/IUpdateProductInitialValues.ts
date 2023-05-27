@@ -2,7 +2,7 @@ export default interface IUpdateProductInitialValues {
   title?: string
   description?: string
   originalPrice?: number
-  discountRate?: number | null
+  discountRate?: number
   pointValue?: number
   quantity?: number
   category?: number
