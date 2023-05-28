@@ -12,8 +12,9 @@ import ProductsManagePage from './pages/ProductsManagePage'
 import ProductCreatePage from './pages/ProductCreatePage'
 import BrandsManagePage from './pages/BrandsManagePage'
 import CategoriesManagePage from './pages/CategoriesManagePage'
-import ColorsManagePage from './pages/ColorsManagePage'
 import CategoryCreatePage from './pages/CategoryCreatePage'
+import ColorsManagePage from './pages/ColorsManagePage'
+import ColorCreatePage from './pages/ColorCreatePage'
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: 'colors',
         element: <ColorsManagePage />
+      },
+      {
+        path: 'colors/create',
+        element: <ColorCreatePage />
       }
     ]
   }

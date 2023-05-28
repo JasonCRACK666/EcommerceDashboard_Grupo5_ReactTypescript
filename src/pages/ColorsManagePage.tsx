@@ -2,6 +2,8 @@ import { FC, useContext } from 'react'
 
 import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
+import { useNavigate } from 'react-router-dom'
+
 import { useQuery } from '@tanstack/react-query'
 
 import { AxiosError } from 'axios'
@@ -15,6 +17,7 @@ import ColorDetailModal from '../components/ColorDetailModal'
 
 import {
   Box,
+  Button,
   CircularProgress,
   Container,
   Divider,
@@ -29,6 +32,8 @@ import {
 } from '@mui/material'
 
 const ColorsManagePage: FC = () => {
+  const navigate = useNavigate()
+
   const {
     data: colors,
     isLoading,
@@ -44,9 +49,18 @@ const ColorsManagePage: FC = () => {
   return (
     <ManageProvider>
       <Container maxWidth='sm' sx={{ mt: 2 }}>
-        <Typography component='h1' variant='h2'>
-          Colores
-        </Typography>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography component='h1' variant='h2'>
+            Colores
+          </Typography>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={() => navigate('/dashboard/colors/create')}
+          >
+            Añadir color
+          </Button>
+        </Box>
 
         <Divider />
 
