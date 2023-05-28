@@ -1,8 +1,9 @@
 import axios from 'axios'
 
 import ICategory from '../interfaces/category/ICategory'
-import IMessageResponse from '../interfaces/IMessageResponse'
+import ICreateCategory from '../interfaces/category/ICreateCategory'
 import IUpdateCategoryInitialValues from '../interfaces/category/IUpdateCategoryInitialValues'
+import IMessageResponse from '../interfaces/IMessageResponse'
 
 import { getToken } from '../utils/getToken'
 
@@ -19,6 +20,16 @@ export const getCategory = async (
   categoryId: number | null
 ): Promise<ICategory> => {
   const res = await categoryEndpoint.get<ICategory>(`/${categoryId}`)
+  return res.data
+}
+
+export const createCategory = async (categoryData: ICreateCategory) => {
+  const res = await categoryEndpoint.post<ICategory>('', categoryData, {
+    headers: {
+      Authorization: getToken()
+    }
+  })
+
   return res.data
 }
 

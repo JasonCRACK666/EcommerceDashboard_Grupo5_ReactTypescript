@@ -1,5 +1,7 @@
 import { FC, useContext } from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
 import { useQuery } from '@tanstack/react-query'
@@ -15,6 +17,7 @@ import CategoryDetailModal from '../components/CategoryDetailModal'
 
 import {
   Box,
+  Button,
   CircularProgress,
   Container,
   Divider,
@@ -29,6 +32,8 @@ import {
 } from '@mui/material'
 
 const CategoriesManagePage: FC = () => {
+  const navigate = useNavigate()
+
   const {
     data: categories,
     isLoading,
@@ -44,9 +49,18 @@ const CategoriesManagePage: FC = () => {
   return (
     <ManageProvider>
       <Container maxWidth='sm' sx={{ mt: 2 }}>
-        <Typography component='h1' variant='h2'>
-          Categorías
-        </Typography>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography component='h1' variant='h2'>
+            Categorías
+          </Typography>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={() => navigate('/dashboard/categories/create')}
+          >
+            Añadir categoría
+          </Button>
+        </Box>
 
         <Divider />
 
