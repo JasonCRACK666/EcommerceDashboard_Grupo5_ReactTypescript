@@ -2,6 +2,8 @@ import { FC, useContext } from 'react'
 
 import ManageProvider, { ManageContext } from '../context/ManageProvider'
 
+import { useNavigate } from 'react-router-dom'
+
 import { useQuery } from '@tanstack/react-query'
 
 import { AxiosError } from 'axios'
@@ -11,9 +13,11 @@ import IBrand from '../interfaces/brand/IBrand'
 import IErrorResponse from '../interfaces/IErrorResponse'
 
 import BrandTableRow from '../components/BrandTableRow'
+import BrandDetailModal from '../components/BrandDetailModal'
 
 import {
   Box,
+  Button,
   CircularProgress,
   Container,
   Divider,
@@ -26,9 +30,10 @@ import {
   TableRow,
   Typography
 } from '@mui/material'
-import BrandDetailModal from '../components/BrandDetailModal'
 
 const BrandsManagePage: FC = () => {
+  const navigate = useNavigate()
+
   const {
     data: brands,
     isLoading,
@@ -44,9 +49,18 @@ const BrandsManagePage: FC = () => {
   return (
     <ManageProvider>
       <Container maxWidth='sm' sx={{ mt: 2 }}>
-        <Typography component='h1' variant='h2'>
-          Marcas
-        </Typography>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography component='h1' variant='h2'>
+            Marcas
+          </Typography>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={() => navigate('/dashboard/brands/create')}
+          >
+            Añadir categoría
+          </Button>
+        </Box>
 
         <Divider />
 

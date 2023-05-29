@@ -22,6 +22,18 @@ export const getBrand = async (
   return res.data
 }
 
+export const createBrand = async (
+  brandData: FormData
+): Promise<IDetailBrand> => {
+  const res = await brandEndpoint.post<IDetailBrand>('', brandData, {
+    headers: {
+      Authorization: getToken()
+    }
+  })
+
+  return res.data
+}
+
 export const updateBrand = async (
   brandId: number,
   brandFormData: FormData
