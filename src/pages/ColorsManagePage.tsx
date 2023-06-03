@@ -42,7 +42,6 @@ const ColorsManagePage: FC = () => {
   } = useQuery<IColor[], AxiosError<IErrorResponse>>({
     queryKey: ['colors'],
     queryFn: getAllColors,
-    refetchOnMount: false,
     refetchOnWindowFocus: false
   })
 

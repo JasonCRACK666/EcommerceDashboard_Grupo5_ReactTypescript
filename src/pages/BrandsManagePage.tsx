@@ -42,7 +42,6 @@ const BrandsManagePage: FC = () => {
   } = useQuery<IBrand[], AxiosError<IErrorResponse>>({
     queryKey: ['brands'],
     queryFn: getAllBrands,
-    refetchOnMount: false,
     refetchOnWindowFocus: false
   })
 

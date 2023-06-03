@@ -42,7 +42,6 @@ const CategoriesManagePage: FC = () => {
   } = useQuery<ICategory[], AxiosError<IErrorResponse>>({
     queryKey: ['categories'],
     queryFn: getAllCategories,
-    refetchOnMount: false,
     refetchOnWindowFocus: false
   })
 
