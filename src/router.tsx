@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
 import ResizeListNavProvider from './context/ResizeListNavProvider'
 
@@ -18,6 +18,12 @@ import ColorCreatePage from './pages/ColorCreatePage'
 import BrandCreatePage from './pages/BrandCreatePage'
 
 const router = createBrowserRouter([
+  {
+    path: '*',
+    loader: () => {
+      return redirect('/dashboard')
+    }
+  },
   {
     path: '/login',
     element: <LoginPage />
