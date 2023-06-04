@@ -74,7 +74,7 @@ const BrandCreatePage: FC = () => {
           <AiFillCaretLeft />
         </IconButton>
         <Typography component='h1' variant='h3'>
-          Añadir categoría
+          Añadir marca
         </Typography>
       </Box>
 

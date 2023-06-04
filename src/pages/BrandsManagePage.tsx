@@ -57,7 +57,7 @@ const BrandsManagePage: FC = () => {
             color='secondary'
             onClick={() => navigate('/dashboard/brands/create')}
           >
-            Añadir categoría
+            Añadir marca
           </Button>
         </Box>
 
