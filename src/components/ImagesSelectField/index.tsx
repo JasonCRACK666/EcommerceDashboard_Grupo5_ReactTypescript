@@ -18,9 +18,7 @@ interface Props {
   errorMessage?: string
   error?: boolean
   value: File[]
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: UseFormSetValue<any>
 }
 
@@ -51,7 +49,7 @@ const ImagesSelectField: FC<Props> = ({
   const handleRemoveImage = (imageIndex: number) => {
     setValue(
       name,
-      value.filter((_, index) => index !== imageIndex)
+      images.filter((_, index) => index !== imageIndex)
     )
     setImages(prevImages =>
       prevImages.filter((_, index) => index !== imageIndex)
