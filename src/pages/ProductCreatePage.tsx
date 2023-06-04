@@ -58,7 +58,10 @@ const ProductCreatePage: FC = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<ICreateProduct>({
-    resolver: zodResolver(createProductValidation)
+    resolver: zodResolver(createProductValidation),
+    defaultValues: {
+      images: []
+    }
   })
 
   const handleCreateProduct = handleSubmit(dataProduct => {
