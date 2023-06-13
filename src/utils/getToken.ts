@@ -1,6 +1,11 @@
 import { useAuthStore } from '../store/useAuthStore'
 
-export const getToken = (): string => {
-  const token = useAuthStore.getState().token
-  return token ? `Bearer ${token}` : ''
+export const getToken = (): string | null => {
+  const tokenFromStorage = useAuthStore.getState().token
+
+  const tokenFromLocalStorage = localStorage.getItem('token')
+
+  const token = tokenFromStorage ?? tokenFromLocalStorage
+
+  return token ? `Bearer ${token}` : null
 }
