@@ -54,12 +54,13 @@ const ProductsManagePage: FC = () => {
     isLoading,
     isError,
     error
-  } = useQuery<
-    IPaginationResponse<IProduct[]>,
-    AxiosError<{ message: string }>
-  >(['products'], getAllProducts, {
-    refetchOnWindowFocus: false
-  })
+  } = useQuery<IPaginationResponse<IProduct>, AxiosError<{ message: string }>>(
+    ['products'],
+    getAllProducts,
+    {
+      refetchOnWindowFocus: false
+    }
+  )
 
   const handleCloseMessage = () => {
     setShowMessage(false)

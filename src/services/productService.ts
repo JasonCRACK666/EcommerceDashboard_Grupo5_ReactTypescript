@@ -13,9 +13,9 @@ const productEndpoint = axios.create({
 })
 
 export const getAllProducts = async (): Promise<
-  IPaginationResponse<IProduct[]>
+  IPaginationResponse<IProduct>
 > => {
-  const res = await productEndpoint.get<IPaginationResponse<IProduct[]>>('')
+  const res = await productEndpoint.get<IPaginationResponse<IProduct>>('')
   return res.data
 }
 

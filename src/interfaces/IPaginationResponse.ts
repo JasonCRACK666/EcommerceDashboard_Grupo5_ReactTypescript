@@ -1,5 +1,5 @@
 export default interface IPaginationResponse<T> {
-  data: T
+  data: T[]
   pageNo: number
   pageSize: number
   totalElements: number
