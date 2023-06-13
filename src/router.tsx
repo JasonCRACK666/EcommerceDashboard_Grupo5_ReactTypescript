@@ -16,6 +16,7 @@ import CategoryCreatePage from './pages/CategoryCreatePage'
 import ColorsManagePage from './pages/ColorsManagePage'
 import ColorCreatePage from './pages/ColorCreatePage'
 import BrandCreatePage from './pages/BrandCreatePage'
+import UsersManagePage from './pages/UsersManagePage'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <DashboardPage />
+      },
+      {
+        path: 'users',
+        element: <UsersManagePage />
       },
       {
         path: 'products',
